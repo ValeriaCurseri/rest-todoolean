@@ -1,7 +1,3 @@
-// Completare l’esercizio iniziato a lezione sulla todo-list.
-// Utilizzare l’API di esempio http://157.230.17.132:3008
-// e fare le 4 operazioni Create, Read, Update e Delete.
-
 $(document).ready(function(){
 
     ottieniTodo();
@@ -22,10 +18,41 @@ $(document).ready(function(){
     //     }
     // })
 
-    $(document).on('click','.delete',function(){
+    $(document).on('click','span.delete',function(){
         var idDaCancellare = $(this).parent().attr('data-id');
         eliminaTodo(idDaCancellare);
     });
+
+    $(document).on('click','span.testo',function(){                                         // al click sul testo del to do
+        $(this).addClass('hidden');                                                             // nasconde il testo
+        var idDaCambiare = $(this).parent().attr('data-id');
+        $("[data-id=" + idDaCambiare + "]").children('input.da-fare').removeClass('hidden');    // mostra l'input per modificare
+    });
+
+    // // 1 - cliccando fuori le classi si ri invertono
+    // $(document).on('focusout','span.testo',function(){                                      // al click sul testo del to do
+    //     $(this).removeClass('hidden');                                                          // nasconde il testo
+    //     var idDaCambiare = $(this).parent().attr('data-id');
+    //     $("[data-id=" + idDaCambiare + "]").children('input.da-fare').addClass('hidden');       // mostra l'input per modificare
+    // });
+
+    // $(document).on('toggle','.click',function(){                                         // al click sul testo del to do
+    //     $(this).children('span.testo').addClass('hidden');                            // nasconde il testo
+    //     var idDaCambiare = $(this).parent().attr('data-id');
+    //     $(this).children('input.da-fare').removeClass('hidden');    // mostra l'input per modificare
+    // });
+
+    // $(document).on('focusout','.click',function(){                                         // al click sul testo del to do
+    //     $(document).on('toggle','.click',function(){                                         // al click sul testo del to do
+    //         $(this).children('span.testo').addClass('hidden');                            // nasconde il testo
+    //         var idDaCambiare = $(this).parent().attr('data-id');
+    //         $(this).children('input.da-fare').removeClass('hidden');    // mostra l'input per modificare
+    //     });
+    // });
+
+    // 2 - deve realmente modificare
+
+
 
 })
 
