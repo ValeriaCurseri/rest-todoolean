@@ -23,36 +23,26 @@ $(document).ready(function(){
         eliminaTodo(idDaCancellare);
     });
 
-    $(document).on('click','span.testo',function(){                                         // al click sul testo del to do
-        $(this).addClass('hidden');                                                             // nasconde il testo
-        var idDaCambiare = $(this).parent().attr('data-id');
-        $("[data-id=" + idDaCambiare + "]").children('input.da-fare').removeClass('hidden');    // mostra l'input per modificare
+    $(document).on('click','span.testo',function(){                     // al click sul testo del to do
+        $(this).addClass('hidden');                                         // nasconde il testo
+        $(this).siblings('input.da-fare').removeClass('hidden').focus();    // mostra l'input per modificare
+
     });
 
-    // // 1 - cliccando fuori le classi si ri invertono
-    // $(document).on('focusout','span.testo',function(){                                      // al click sul testo del to do
-    //     $(this).removeClass('hidden');                                                          // nasconde il testo
-    //     var idDaCambiare = $(this).parent().attr('data-id');
-    //     $("[data-id=" + idDaCambiare + "]").children('input.da-fare').addClass('hidden');       // mostra l'input per modificare
-    // });
-
-    // $(document).on('toggle','.click',function(){                                         // al click sul testo del to do
-    //     $(this).children('span.testo').addClass('hidden');                            // nasconde il testo
-    //     var idDaCambiare = $(this).parent().attr('data-id');
-    //     $(this).children('input.da-fare').removeClass('hidden');    // mostra l'input per modificare
-    // });
-
-    // $(document).on('focusout','.click',function(){                                         // al click sul testo del to do
-    //     $(document).on('toggle','.click',function(){                                         // al click sul testo del to do
-    //         $(this).children('span.testo').addClass('hidden');                            // nasconde il testo
-    //         var idDaCambiare = $(this).parent().attr('data-id');
-    //         $(this).children('input.da-fare').removeClass('hidden');    // mostra l'input per modificare
-    //     });
-    // });
+    // 1 - cliccando fuori le classi si ri invertono
+    $(document).on('focusout','input.da-fare',function(){               // al click fuori dall'input
+        $(this).addClass('hidden');                                         // nasconde l'input
+        $(this).siblings('span.testo').removeClass('hidden');               // mostra il testo
+    });
 
     // 2 - deve realmente modificare
-
-
+    $(document).on('keydown','input.da-fare',(function(event){
+        if (event.keyCode == 13 || event.which == 13){
+            var nuovoTodo = $(this).val();
+            var idDaModificare = $(this).parent().attr('data-id');
+            sostituisciTodo(nuovoTodo, idDaModificare);
+        }
+    }))
 
 })
 
@@ -94,7 +84,7 @@ function aggiungiTodo(val){
     $.ajax(
         {
             url:'http://157.230.17.132:3008/todos',
-            method:'POST',
+            method:'PUSH',
             data:{
                 text: val
             },
@@ -115,6 +105,26 @@ function eliminaTodo(id){
         {
             url:'http://157.230.17.132:3008/todos/' + id,
             method:'DELETE',
+            success: function(risposta){
+                $('ol#to-dos').empty();
+                ottieniTodo();
+                stampaTodo(risposta);
+            },
+            error: function(){
+                alert('Si è verificato un errore');
+            }
+        }
+    )
+}
+
+function sostituisciTodo(val, id){
+    $.ajax(
+        {
+            url:'http://157.230.17.132:3008/todos/' + id,
+            method:'PUT',
+            data:{
+                text:val
+            },
             success: function(risposta){
                 $('ol#to-dos').empty();
                 ottieniTodo();
