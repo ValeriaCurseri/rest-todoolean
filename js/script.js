@@ -47,7 +47,6 @@ $(document).ready(function(){
 })
 
 // DA FARE
-// - post all'invio con tasto invio
 // - iconicine invece delle X https://fontawesome.com/icons/times?style=solid
 
 // ---- funzioni ---- //
