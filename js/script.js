@@ -6,17 +6,29 @@ $(document).ready(function(){
 
     ottieniTodo();
 
-    // $('form#post-todo button').click(function(){
-    //     aggiungiTodo();
-    // });
-    //
-    // $('form#post-todo input').keyup(function(event){
-    //     if(event.keyCode == 13 || event.which == 13){
-    //         aggiungiTodo();
+    var nuovoTodo;
+
+    $('form#post-todo button').click(function(){
+        nuovoTodo = $('input#todo').val();
+        aggiungiTodo(nuovoTodo);
+    })
+
+    // $('input#todo').keyup(function(event){
+    //     if (event.keyCode == 13 || event.which == 13){
+    //         console.log('ok');
+    //         // nuovoTodo = $('input#todo').val();
+    //         // console.log(nuovoTodo);
+    //         // aggiungiTodo(nuovoTodo);
     //     }
-    // });
+    // })
+
+    // $('')
 
 })
+
+// DA FARE
+// - post all'invio con tasto invio
+// - iconicine invece delle X
 
 // ---- funzioni ---- //
 
@@ -48,6 +60,22 @@ function stampaTodo(data){
     }
 }
 
-// function aggiungiTodo(){
-//     var nuovoTodo = $('form#post-todo input').val();
-// }
+function aggiungiTodo(val){
+    $.ajax(
+        {
+            url:'http://157.230.17.132:3008/todos',
+            method:'POST',
+            data:{
+                text: val
+            },
+            success: function(risposta){
+                $('ol#to-dos').empty();
+                ottieniTodo();
+                stampaTodo(risposta);
+            },
+            error: function(){
+                alert('Si è verificato un errore');
+            }
+        }
+    )
+}
