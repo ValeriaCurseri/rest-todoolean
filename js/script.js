@@ -9,12 +9,9 @@ $(document).ready(function(){
     });
 
     // aggiungi to do premendo invio
-    $('input#todo').keyup(function(event){
-        console.log('funziona keydown');
+    $('input#todo').keydown(function(event){
         if (event.keyCode == 13 || event.which == 13){
-            console.log('funziona invio');
             var nuovoTodoInvio = $(this).val();
-            console.log(nuovoTodoInvio);
             aggiungiTodo(nuovoTodoInvio);
         }
     })
@@ -51,7 +48,7 @@ $(document).ready(function(){
 
 // DA FARE
 // - post all'invio con tasto invio
-// - iconicine invece delle X
+// - iconicine invece delle X https://fontawesome.com/icons/times?style=solid
 
 // ---- funzioni ---- //
 
