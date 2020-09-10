@@ -1,9 +1,11 @@
 $(document).ready(function(){
 
+    startTime();        // fz per calcolare l'ora
+
     ottieniTodo();
 
     // aggiungi to do al click sul bottone
-    $('form#post-todo button').click(function(){
+    $('form#post-todo .button').click(function(){
         var nuovoTodoBottone = $('input#todo').val();
         aggiungiTodo(nuovoTodoBottone);
     });
@@ -125,6 +127,7 @@ function sostituisciTodo(val, id){
                 text:val
             },
             success: function(risposta){
+                console.log(risposta);
                 $('ol#to-dos').empty();
                 ottieniTodo();
                 stampaTodo(risposta);
@@ -134,4 +137,22 @@ function sostituisciTodo(val, id){
             }
         }
     )
+}
+
+// calcolo l'ora
+
+function startTime() {
+    var oggi = new Date();
+    var h = oggi.getHours();
+    var m = oggi.getMinutes();
+    var s = oggi.getSeconds();
+    m = addZero(m);
+    var ora = $('#ora').html(h + ":" + m);
+    var t = setTimeout(startTime, 500);
+    return ora;
+}
+
+function addZero(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
 }

@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>To Do di Boolean</title>
+        <!-- font -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <!-- css -->
         <link rel="stylesheet" href="css/style.css">
         <!-- handlebars -->
@@ -12,16 +14,25 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     </head>
     <body>
+        <div class="container">
+            <div id="centro">
+                <div id="ora"></div>
+                <div id="saluto">Buon lavoro!</div>
+            </div>
 
-        <form id="post-todo" action="index.html" method="post">
-            <label for="todo">Cosa devi fare oggi?</label>
-            <input id="todo" type="text" name="todo" placeholder="Inserisci l'attività">
-            <button type="button" name="button">Aggiungi to-do alla lista</button>
-        </form>
+            <div id="cose-da-fare">
+                <form id="post-todo" action="index.html" method="post">
+                    <label for="todo">Cosa devi fare oggi?</label>
+                    <input id="todo" type="text" name="todo" placeholder="Inserisci l'attività">
+                    <div class='button'>Aggiungi to-do alla lista</div>
+                </form>
 
-        <ol id="to-dos">
+                <ol id="to-dos">
 
-        </ol>
+                </ol>
+            </div>
+        </div>
+
 
         <!-- template handlebars per la query -->
         <script id="entry-template" type="text/x-handlebars-template">

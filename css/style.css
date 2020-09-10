@@ -1,4 +1,105 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+h1,h2,h3,h4,h5,h6,p,span,div{
+    color:#fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    width:100vw;
+    height:100vh;
+    background-image: url('https://www.bottegadellemani.com/wp-content/uploads/2017/08/paesaggio-alpi-think-1217.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position:relative;
+}
+
+#centro{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    color:#fff;
+}
+
+#ora{
+    font-size:200px;
+    font-weight:bold;
+}
+
+#saluto{
+    font-size:60px;
+    font-weight:bold;
+}
+
+#cose-da-fare{
+    width:300px;
+    background-color: rgba(0,0,0,0.5);
+    position:absolute;
+    bottom:30px;
+    right:30px;
+    border-radius: 20px;
+    padding:20px;
+}
+
+#cose-da-fare form{
+    text-align: center;
+    margin-bottom:20px;
+}
+
+label{
+    font-size: 20px;
+}
+
+.button{
+    width: 210px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: #000;
+    line-height: 30px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+input, input:focus{
+    border: transparent;
+    background-color: #fff;
+    outline:none;
+}
+
+input#todo{
+    width: 210px;
+    height: 30px;
+    border-radius: 50px;
+    line-height: 30px;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+
+input.da-fare{
+    width: 200px;
+    height: 25px;
+    border-radius: 10px;
+    line-height: 25px;
+    padding: 0 5px;
+}
+
+ol#to-dos{
+    margin-left:20px;
+}
+
 .delete{
+    width:20px;
+    height:20px;
+    font-size:20px;
     color:red;
     cursor:pointer;
 }
