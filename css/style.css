@@ -90,6 +90,10 @@ input.da-fare{
     border-radius: 10px;
     line-height: 25px;
     padding: 0 5px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
 }
 
 ol#to-dos{

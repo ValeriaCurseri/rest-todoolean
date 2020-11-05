@@ -31,7 +31,7 @@ $(document).ready(function(){
 
     });
 
-    // cliccando fuori dall'input torna visibile il teso
+    // cliccando fuori dall'input torna visibile il testo
     $(document).on('focusout','input.da-fare',function(){               // al click fuori dall'input
         $(this).addClass('hidden');                                         // nasconde l'input
         $(this).siblings('span.testo').removeClass('hidden');               // mostra il testo
